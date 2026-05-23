@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://c7wj1pqiguk8n"]
+
+[ext_resource type="VideoStream" uid="uid://c1i7m07wk004u" path="res://BackgroundVideo.ogv" id="1_dxnax"]
+[ext_resource type="Shader" uid="uid://dj1jdy3ym1k1x" path="res://PostFX.gdshader" id="1_vtcuk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dxnax"]
+font_size = 50
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dxnax"]
+shader = ExtResource("1_vtcuk")
+shader_parameter/scanline_strength = 0.14
+shader_parameter/scanline_count = 320.0
+shader_parameter/scanline_thickness = 0.18
+shader_parameter/scanline_scroll_speed = 0.08
+shader_parameter/noise_strength = 0.05
+shader_parameter/noise_scale = 900.0
+shader_parameter/noise_speed = 1.2
+shader_parameter/glitch_strength = 0.18
+shader_parameter/glitch_frequency = 0.06
+shader_parameter/glitch_refresh_rate = 12.0
+shader_parameter/glitch_band_count = 60.0
+shader_parameter/glitch_band_probability = 0.22
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1818976928]
+
+[node name="MainMenu" type="Control" parent="." unique_id=1804777529]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(960, 540)
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="MainMenu" unique_id=323261252]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("1_dxnax")
+autoplay = true
+loop = true
+
+[node name="Label" type="Label" parent="MainMenu" unique_id=1631101565]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 672.0
+offset_right = 354.0
+offset_bottom = 799.0
+text = "_START"
+label_settings = SubResource("LabelSettings_dxnax")
+
+[node name="ColorRect" type="ColorRect" parent="MainMenu" unique_id=204886488]
+z_index = 5
+material = SubResource("ShaderMaterial_dxnax")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
