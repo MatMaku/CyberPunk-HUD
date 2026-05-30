@@ -1,0 +1,163 @@
+[gd_scene format=3 uid="uid://c7wj1pqiguk8n"]
+
+[ext_resource type="Texture2D" uid="uid://bxvq05syjtq2n" path="res://Sin título.png" id="1_8w2m6"]
+[ext_resource type="Shader" uid="uid://dj1jdy3ym1k1x" path="res://PostFX.gdshader" id="1_vtcuk"]
+[ext_resource type="Script" uid="uid://bf8sxbs5jtjrj" path="res://HoverManager.gd" id="1_wwb2p"]
+[ext_resource type="Texture2D" uid="uid://cocj0bwfun6va" path="res://Vignette.png" id="2_8w2m6"]
+[ext_resource type="Texture2D" uid="uid://b2qs5vjgtplwe" path="res://Hover.png" id="2_q6jtx"]
+[ext_resource type="FontFile" uid="uid://cn4017lvkr6hs" path="res://Share-TechMono.ttf" id="3_wwb2p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dxnax"]
+shader = ExtResource("1_vtcuk")
+shader_parameter/scanline_strength = 0.14
+shader_parameter/scanline_count = 320.0
+shader_parameter/scanline_thickness = 0.18
+shader_parameter/scanline_scroll_speed = 0.08
+shader_parameter/noise_strength = 0.05
+shader_parameter/noise_scale = 900.0
+shader_parameter/noise_speed = 1.2
+shader_parameter/glitch_strength = 0.18
+shader_parameter/glitch_frequency = 0.06
+shader_parameter/glitch_refresh_rate = 12.0
+shader_parameter/glitch_band_count = 60.0
+shader_parameter/glitch_band_probability = 0.22
+
+[sub_resource type="LabelSettings" id="LabelSettings_jo40d"]
+font = ExtResource("3_wwb2p")
+font_size = 64
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 0.15686275)
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wwb2p"]
+font = ExtResource("3_wwb2p")
+font_size = 200
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1818976928]
+
+[node name="HoverManager" type="Node" parent="." unique_id=225939575 node_paths=PackedStringArray("buttons")]
+script = ExtResource("1_wwb2p")
+buttons = [NodePath("../MainMenu/Start"), NodePath("../MainMenu/Options"), NodePath("../MainMenu/Exit")]
+hover_texture = ExtResource("2_q6jtx")
+
+[node name="MainMenu" type="Control" parent="." unique_id=1804777529]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(960, 540)
+
+[node name="GameImage" type="TextureRect" parent="MainMenu" unique_id=1342680849]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_8w2m6")
+
+[node name="GameVideo" type="VideoStreamPlayer" parent="MainMenu" unique_id=323261252]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+autoplay = true
+loop = true
+
+[node name="TextureRect" type="TextureRect" parent="MainMenu" unique_id=114852145]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_8w2m6")
+
+[node name="Effects" type="ColorRect" parent="MainMenu" unique_id=204886488]
+z_index = 5
+material = SubResource("ShaderMaterial_dxnax")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Start" type="Button" parent="MainMenu" unique_id=1351138285]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 598.0
+offset_right = 373.0
+offset_bottom = 746.0
+flat = true
+
+[node name="Label" type="Label" parent="MainMenu/Start" unique_id=94020098]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 21.0
+offset_right = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "_Start"
+label_settings = SubResource("LabelSettings_jo40d")
+vertical_alignment = 1
+
+[node name="Options" type="Button" parent="MainMenu" unique_id=1953153852]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 748.0
+offset_right = 373.0
+offset_bottom = 896.0
+flat = true
+
+[node name="Label" type="Label" parent="MainMenu/Options" unique_id=1924954387]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 21.0
+offset_right = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "_Options"
+label_settings = SubResource("LabelSettings_jo40d")
+vertical_alignment = 1
+
+[node name="Exit" type="Button" parent="MainMenu" unique_id=24540917]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 898.0
+offset_right = 373.0
+offset_bottom = 1046.0
+flat = true
+
+[node name="Label" type="Label" parent="MainMenu/Exit" unique_id=1312000487]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 21.0
+offset_right = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "_Exit"
+label_settings = SubResource("LabelSettings_jo40d")
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="MainMenu" unique_id=878296752]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 953.0
+offset_bottom = 251.0
+text = "OBSERVER"
+label_settings = SubResource("LabelSettings_wwb2p")
+horizontal_alignment = 1
+vertical_alignment = 1
