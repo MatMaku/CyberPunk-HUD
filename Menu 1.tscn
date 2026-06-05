@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c7wj1pqiguk8n"]
 
-[ext_resource type="Texture2D" uid="uid://bxvq05syjtq2n" path="res://Sin título.png" id="1_8w2m6"]
+[ext_resource type="Texture2D" uid="uid://bxvq05syjtq2n" path="res://Main menu.png" id="1_8w2m6"]
 [ext_resource type="Shader" uid="uid://dj1jdy3ym1k1x" path="res://PostFX.gdshader" id="1_vtcuk"]
 [ext_resource type="Script" uid="uid://bf8sxbs5jtjrj" path="res://HoverManager.gd" id="1_wwb2p"]
 [ext_resource type="Texture2D" uid="uid://cocj0bwfun6va" path="res://Vignette.png" id="2_8w2m6"]
@@ -48,6 +48,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(960, 540)
+metadata/_edit_use_anchors_ = true
 
 [node name="GameImage" type="TextureRect" parent="MainMenu" unique_id=1342680849]
 layout_mode = 1
@@ -105,7 +106,7 @@ offset_left = 21.0
 offset_right = 9.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "_Start"
+text = "Start"
 label_settings = SubResource("LabelSettings_jo40d")
 vertical_alignment = 1
 
@@ -126,7 +127,7 @@ offset_left = 21.0
 offset_right = 9.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "_Options"
+text = "Options"
 label_settings = SubResource("LabelSettings_jo40d")
 vertical_alignment = 1
 
@@ -147,7 +148,7 @@ offset_left = 21.0
 offset_right = 9.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "_Exit"
+text = "Exit"
 label_settings = SubResource("LabelSettings_jo40d")
 vertical_alignment = 1
 
