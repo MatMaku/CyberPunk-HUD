@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cocj0bwfun6va"
-path="res://.godot/imported/Vignette.png-e7a658815db0576ce957604044142cf7.ctex"
+uid="uid://bikq633yymft"
+path="res://.godot/imported/Pause menu.jpg-16e4d6107a2b19269fdf51790d41d73c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Vignette.png"
-dest_files=["res://.godot/imported/Vignette.png-e7a658815db0576ce957604044142cf7.ctex"]
+source_file="res://Images/Fondos/Pause menu.jpg"
+dest_files=["res://.godot/imported/Pause menu.jpg-16e4d6107a2b19269fdf51790d41d73c.ctex"]
 
 [params]
 

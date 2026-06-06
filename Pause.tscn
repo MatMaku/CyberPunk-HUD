@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://bewke5t5gbqn5"]
 
-[ext_resource type="Texture2D" uid="uid://bikq633yymft" path="res://Pause menu.jpg" id="1_lg454"]
-[ext_resource type="Texture2D" uid="uid://by5fg5mlwo4cs" path="res://Menu panel.png" id="2_2jkrm"]
-[ext_resource type="Shader" uid="uid://ct0cd56plk083" path="res://PanelEffect.gdshader" id="3_km1i3"]
+[ext_resource type="Texture2D" uid="uid://bikq633yymft" path="res://Images/Fondos/Pause menu.jpg" id="1_lg454"]
+[ext_resource type="Texture2D" uid="uid://by5fg5mlwo4cs" path="res://Images/Menu panel.png" id="2_2jkrm"]
+[ext_resource type="Shader" uid="uid://ct0cd56plk083" path="res://Shaders/PanelEffect.gdshader" id="3_km1i3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h7jby"]
 shader = ExtResource("3_km1i3")
-shader_parameter/inner_margin = Vector2(0, 0)
+shader_parameter/inner_margin = Vector2(0.05, 0.05)
 shader_parameter/edge_width = 0.050000002375
-shader_parameter/inner_softness = 0.10000000475
+shader_parameter/inner_softness = 0.20000000298023
 shader_parameter/outer_fade = 0.08
 shader_parameter/glitch_strength = 0.0050000002375
 shader_parameter/glitch_speed = 7.0

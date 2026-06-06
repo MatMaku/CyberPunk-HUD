@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://cn4017lvkr6hs"
-path="res://.godot/imported/Share-TechMono.ttf-3d8beb220f74d4dfcba8edb107f426ce.fontdata"
+uid="uid://bau7b4q7f3b7k"
+path="res://.godot/imported/StickNoBills-VariableFont_wght.ttf-94d968cfaaca1a44b2c49244fa92a2c8.fontdata"
 
 [deps]
 
-source_file="res://Share-TechMono.ttf"
-dest_files=["res://.godot/imported/Share-TechMono.ttf-3d8beb220f74d4dfcba8edb107f426ce.fontdata"]
+source_file="res://Fuentes/StickNoBills-VariableFont_wght.ttf"
+dest_files=["res://.godot/imported/StickNoBills-VariableFont_wght.ttf-94d968cfaaca1a44b2c49244fa92a2c8.fontdata"]
 
 [params]
 

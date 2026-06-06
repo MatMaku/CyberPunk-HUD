@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2qs5vjgtplwe"
-path="res://.godot/imported/Hover.png-ad81ed31f67d786569743b758e558b17.ctex"
+uid="uid://by5fg5mlwo4cs"
+path="res://.godot/imported/Menu panel.png-439acc62cb9d4a160f0654a8f4c726e1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Hover.png"
-dest_files=["res://.godot/imported/Hover.png-ad81ed31f67d786569743b758e558b17.ctex"]
+source_file="res://Images/Menu panel.png"
+dest_files=["res://.godot/imported/Menu panel.png-439acc62cb9d4a160f0654a8f4c726e1.ctex"]
 
 [params]
 
