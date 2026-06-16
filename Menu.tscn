@@ -1,0 +1,393 @@
+[gd_scene format=3 uid="uid://c7wj1pqiguk8n"]
+
+[ext_resource type="Script" uid="uid://bf8sxbs5jtjrj" path="res://Scripts/HoverManager.gd" id="1_1igrg"]
+[ext_resource type="Texture2D" uid="uid://dev5aetaayyb8" path="res://Images/Buttons/Selección.png" id="2_v0s1l"]
+[ext_resource type="Script" uid="uid://dtqh1ichf4jpy" path="res://Scripts/MainMenuController.gd" id="3_5qkn8"]
+[ext_resource type="PackedScene" uid="uid://bewke5t5gbqn5" path="res://Pause.tscn" id="4_xucoo"]
+[ext_resource type="Texture2D" uid="uid://bxvq05syjtq2n" path="res://Images/Fondos/Fondo.png" id="5_ktlje"]
+[ext_resource type="Script" uid="uid://dgpinvtt3raf" path="res://Scripts/BackgroundSlideshow.gd" id="5_xucoo"]
+[ext_resource type="Texture2D" uid="uid://ixah3k16kxqt" path="res://Images/Fondos/Fondo 2.png" id="6_ktlje"]
+[ext_resource type="Texture2D" uid="uid://cocj0bwfun6va" path="res://Images/Vignette.png" id="6_mnkgh"]
+[ext_resource type="Shader" uid="uid://dj1jdy3ym1k1x" path="res://Shaders/PostFX.gdshader" id="7_elwp8"]
+[ext_resource type="Texture2D" uid="uid://dhvxkb1th1knu" path="res://Images/Rec.png" id="7_v0s1l"]
+[ext_resource type="FontFile" uid="uid://bau7b4q7f3b7k" path="res://Fuentes/StickNoBills-VariableFont_wght.ttf" id="8_h06ok"]
+[ext_resource type="Texture2D" uid="uid://bomjr8y3uxy0g" path="res://Images/Buttons/Boton.png" id="9_n8j1b"]
+[ext_resource type="Texture2D" uid="uid://cm5twaomgxx1y" path="res://Images/Buttons/Boton 2.png" id="10_2qy1q"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wwb2p"]
+font = ExtResource("8_h06ok")
+font_size = 200
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dxnax"]
+shader = ExtResource("7_elwp8")
+shader_parameter/scanline_strength = 0.14
+shader_parameter/scanline_count = 320.0
+shader_parameter/scanline_thickness = 0.18
+shader_parameter/scanline_scroll_speed = 0.08
+shader_parameter/noise_strength = 0.05
+shader_parameter/noise_scale = 900.0
+shader_parameter/noise_speed = 1.2
+shader_parameter/glitch_strength = 0.18
+shader_parameter/glitch_frequency = 0.06
+shader_parameter/glitch_refresh_rate = 12.0
+shader_parameter/glitch_band_count = 60.0
+shader_parameter/glitch_band_probability = 0.22
+
+[sub_resource type="LabelSettings" id="LabelSettings_jo40d"]
+font = ExtResource("8_h06ok")
+font_size = 80
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 0.15686275)
+shadow_offset = Vector2(0, 4)
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1818976928]
+
+[node name="HoverManager" type="Node" parent="." unique_id=225939575 node_paths=PackedStringArray("buttons")]
+script = ExtResource("1_1igrg")
+buttons = [NodePath("../MainMenu/MainButtons/Start"), NodePath("../MainMenu/MainButtons/Options"), NodePath("../MainMenu/MainButtons/Exit"), NodePath("../MainMenu/OptionsMenu/Back")]
+hover_texture = ExtResource("2_v0s1l")
+
+[node name="MainMenu" type="Control" parent="." unique_id=1804777529 node_paths=PackedStringArray("main_menu", "play_button", "options_button", "exit_button", "options_menu", "back_button", "options_controls", "fade_overlay")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(960, 540)
+script = ExtResource("3_5qkn8")
+game_scene = ExtResource("4_xucoo")
+main_menu = NodePath("MainButtons")
+play_button = NodePath("MainButtons/Start")
+options_button = NodePath("MainButtons/Options")
+exit_button = NodePath("MainButtons/Exit")
+options_menu = NodePath("OptionsMenu")
+back_button = NodePath("OptionsMenu/Back")
+options_controls = [NodePath("OptionsMenu/Volume"), NodePath("OptionsMenu/Music"), NodePath("OptionsMenu/Back")]
+fade_overlay = NodePath("FadeOverlay")
+fade_duration = 2.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="Control" parent="MainMenu" unique_id=626968477 node_paths=PackedStringArray("background")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("5_xucoo")
+backgrounds = Array[Texture2D]([ExtResource("6_ktlje"), ExtResource("5_ktlje")])
+background = NodePath("GameImage")
+
+[node name="ColorRect" type="ColorRect" parent="MainMenu/Background" unique_id=1778969452]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="GameImage" type="TextureRect" parent="MainMenu/Background" unique_id=1342680849]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_ktlje")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Detalles" type="Control" parent="MainMenu" unique_id=647136397]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Vignette" type="TextureRect" parent="MainMenu/Detalles" unique_id=114852145]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_mnkgh")
+
+[node name="Rec" type="TextureRect" parent="MainMenu/Detalles" unique_id=1246635931]
+layout_mode = 0
+offset_left = 633.0
+offset_top = 12.0
+offset_right = 1910.0
+offset_bottom = 1066.0
+texture = ExtResource("7_v0s1l")
+
+[node name="Titulo" type="Label" parent="MainMenu/Detalles" unique_id=878296752]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 2.0
+offset_right = 978.0
+offset_bottom = 253.0
+text = "//:failsafe"
+label_settings = SubResource("LabelSettings_wwb2p")
+vertical_alignment = 1
+
+[node name="Effects" type="ColorRect" parent="MainMenu" unique_id=204886488]
+z_index = 5
+material = SubResource("ShaderMaterial_dxnax")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MainButtons" type="Control" parent="MainMenu" unique_id=1986622890]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Start" type="Button" parent="MainMenu/MainButtons" unique_id=1351138285]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 550.0
+offset_right = 412.0
+offset_bottom = 698.0
+flat = true
+expand_icon = true
+
+[node name="Label" type="Label" parent="MainMenu/MainButtons/Start" unique_id=94020098]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_top = 15.0
+offset_right = 88.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Start"
+label_settings = SubResource("LabelSettings_jo40d")
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MainMenu/MainButtons/Start" unique_id=1832181305]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_n8j1b")
+
+[node name="Options" type="Button" parent="MainMenu/MainButtons" unique_id=1953153852]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 720.0
+offset_right = 412.0
+offset_bottom = 868.0
+flat = true
+expand_icon = true
+
+[node name="Label" type="Label" parent="MainMenu/MainButtons/Options" unique_id=1924954387]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_top = 15.0
+offset_right = 88.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Options"
+label_settings = SubResource("LabelSettings_jo40d")
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MainMenu/MainButtons/Options" unique_id=1517063572]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_n8j1b")
+
+[node name="Exit" type="Button" parent="MainMenu/MainButtons" unique_id=24540917]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 890.0
+offset_right = 412.0
+offset_bottom = 1038.0
+flat = true
+expand_icon = true
+
+[node name="Label" type="Label" parent="MainMenu/MainButtons/Exit" unique_id=1312000487]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_top = 15.0
+offset_right = 88.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Exit"
+label_settings = SubResource("LabelSettings_jo40d")
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MainMenu/MainButtons/Exit" unique_id=1653621684]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_n8j1b")
+
+[node name="OptionsMenu" type="Control" parent="MainMenu" unique_id=855729120]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Volume" type="Button" parent="MainMenu/OptionsMenu" unique_id=1843521640]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 550.0
+offset_right = 412.0
+offset_bottom = 698.0
+flat = true
+expand_icon = true
+
+[node name="Label" type="Label" parent="MainMenu/OptionsMenu/Volume" unique_id=1889465737]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_top = 15.0
+offset_right = 88.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Volume"
+label_settings = SubResource("LabelSettings_jo40d")
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MainMenu/OptionsMenu/Volume" unique_id=573465472]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_2qy1q")
+
+[node name="HSlider" type="HSlider" parent="MainMenu/OptionsMenu/Volume" unique_id=1698830801]
+layout_mode = 0
+offset_left = 350.0
+offset_top = 74.0
+offset_right = 600.0
+offset_bottom = 90.0
+scale = Vector2(2.5, 2.5)
+value = 81.0
+
+[node name="Music" type="Button" parent="MainMenu/OptionsMenu" unique_id=1118046097]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 720.0
+offset_right = 412.0
+offset_bottom = 868.0
+flat = true
+expand_icon = true
+
+[node name="Label" type="Label" parent="MainMenu/OptionsMenu/Music" unique_id=514839434]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_top = 15.0
+offset_right = 88.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Music"
+label_settings = SubResource("LabelSettings_jo40d")
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MainMenu/OptionsMenu/Music" unique_id=1030164358]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_2qy1q")
+
+[node name="HSlider" type="HSlider" parent="MainMenu/OptionsMenu/Music" unique_id=357660029]
+layout_mode = 0
+offset_left = 350.0
+offset_top = 74.0
+offset_right = 600.0
+offset_bottom = 90.0
+scale = Vector2(2.5, 2.5)
+value = 81.0
+
+[node name="Back" type="Button" parent="MainMenu/OptionsMenu" unique_id=1694708167]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 890.0
+offset_right = 412.0
+offset_bottom = 1038.0
+flat = true
+expand_icon = true
+
+[node name="Label" type="Label" parent="MainMenu/OptionsMenu/Back" unique_id=240767416]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_top = 15.0
+offset_right = 88.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Back"
+label_settings = SubResource("LabelSettings_jo40d")
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MainMenu/OptionsMenu/Back" unique_id=1355815317]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_n8j1b")
+
+[node name="FadeOverlay" type="ColorRect" parent="MainMenu" unique_id=16841758]
+visible = false
+z_index = 100
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

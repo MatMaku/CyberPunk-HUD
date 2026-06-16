@@ -1,14 +1,27 @@
 [gd_scene format=3 uid="uid://bewke5t5gbqn5"]
 
+[ext_resource type="Script" uid="uid://bf8sxbs5jtjrj" path="res://Scripts/HoverManager.gd" id="1_igaod"]
 [ext_resource type="Texture2D" uid="uid://bikq633yymft" path="res://Images/Fondos/Pause menu.jpg" id="1_lg454"]
 [ext_resource type="Texture2D" uid="uid://by5fg5mlwo4cs" path="res://Images/Menu panel.png" id="2_2jkrm"]
+[ext_resource type="Texture2D" uid="uid://08sxg517u3wj" path="res://Images/Buttons/Selección 2.png" id="2_lj04q"]
 [ext_resource type="Shader" uid="uid://ct0cd56plk083" path="res://Shaders/PanelEffect.gdshader" id="3_km1i3"]
+[ext_resource type="FontFile" uid="uid://bau7b4q7f3b7k" path="res://Fuentes/StickNoBills-VariableFont_wght.ttf" id="4_wqglo"]
+[ext_resource type="Texture2D" uid="uid://6vnst3hj1rrt" path="res://Images/Buttons/Boton 3.png" id="5_5kw20"]
+[ext_resource type="Texture2D" uid="uid://dao30yx62qa1m" path="res://Images/Buttons/Back.png" id="5_lj04q"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ote3a"]
+font = ExtResource("4_wqglo")
+font_size = 140
+
+[sub_resource type="LabelSettings" id="LabelSettings_l3xsy"]
+font = ExtResource("4_wqglo")
+font_size = 80
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h7jby"]
 shader = ExtResource("3_km1i3")
 shader_parameter/inner_margin = Vector2(0.05, 0.05)
-shader_parameter/edge_width = 0.050000002375
-shader_parameter/inner_softness = 0.20000000298023
+shader_parameter/edge_width = 0.0
+shader_parameter/inner_softness = 0.090000004275
 shader_parameter/outer_fade = 0.08
 shader_parameter/glitch_strength = 0.0050000002375
 shader_parameter/glitch_speed = 7.0
@@ -20,6 +33,11 @@ shader_parameter/shimmer = 0.10000000475
 shader_parameter/holo_tint = Color(0.35, 0.9, 1, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=698101117]
+
+[node name="HoverManager" type="Node" parent="." unique_id=629788874 node_paths=PackedStringArray("buttons")]
+script = ExtResource("1_igaod")
+buttons = [NodePath("../PauseMenu/Continue"), NodePath("../PauseMenu/Options"), NodePath("../PauseMenu/Exit")]
+hover_texture = ExtResource("2_lj04q")
 
 [node name="PauseMenu" type="Control" parent="." unique_id=1089429604]
 layout_mode = 3
@@ -39,8 +57,126 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_lg454")
+metadata/_edit_use_anchors_ = true
 
-[node name="Panel" type="Control" parent="PauseMenu" unique_id=1180229553]
+[node name="Pause" type="Label" parent="PauseMenu" unique_id=792683436]
+layout_mode = 0
+offset_left = 800.0
+offset_top = 238.0
+offset_right = 1150.0
+offset_bottom = 418.0
+pivot_offset = Vector2(175, 90)
+text = "PAUSE"
+label_settings = SubResource("LabelSettings_ote3a")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Continue" type="Button" parent="PauseMenu" unique_id=746378176]
+layout_mode = 1
+offset_left = 752.0
+offset_top = 419.0
+offset_right = 1307.0
+offset_bottom = 534.0
+scale = Vector2(0.8, 0.8)
+flat = true
+
+[node name="Background" type="TextureRect" parent="PauseMenu/Continue" unique_id=450162972]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 388.75
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.40000004, 1)
+texture = ExtResource("5_lj04q")
+
+[node name="Label" type="Label" parent="PauseMenu/Continue" unique_id=794862745]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 5.0
+offset_right = 316.0
+offset_bottom = 106.0
+text = "Continue"
+label_settings = SubResource("LabelSettings_l3xsy")
+
+[node name="TextureRect" type="TextureRect" parent="PauseMenu/Continue" unique_id=955725757]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_5kw20")
+
+[node name="Options" type="Button" parent="PauseMenu" unique_id=365627143]
+layout_mode = 0
+offset_left = 752.0
+offset_top = 522.0
+offset_right = 1307.0
+offset_bottom = 637.0
+scale = Vector2(0.8, 0.8)
+flat = true
+
+[node name="Background" type="TextureRect" parent="PauseMenu/Options" unique_id=63201814]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 223.125
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.40000004, 1)
+texture = ExtResource("5_lj04q")
+
+[node name="Label" type="Label" parent="PauseMenu/Options" unique_id=692124388]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 5.0
+offset_right = 316.0
+offset_bottom = 106.0
+text = "Options"
+label_settings = SubResource("LabelSettings_l3xsy")
+
+[node name="TextureRect" type="TextureRect" parent="PauseMenu/Options" unique_id=492115511]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_5kw20")
+
+[node name="Exit" type="Button" parent="PauseMenu" unique_id=1285564168]
+layout_mode = 0
+offset_left = 752.0
+offset_top = 709.0
+offset_right = 1307.0
+offset_bottom = 824.0
+scale = Vector2(0.8, 0.8)
+flat = true
+
+[node name="Background" type="TextureRect" parent="PauseMenu/Exit" unique_id=914488980]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 54.320007
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.40000004, 1)
+texture = ExtResource("5_lj04q")
+
+[node name="Label" type="Label" parent="PauseMenu/Exit" unique_id=1105919622]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 5.0
+offset_right = 316.0
+offset_bottom = 106.0
+text = "Exit"
+label_settings = SubResource("LabelSettings_l3xsy")
+
+[node name="TextureRect" type="TextureRect" parent="PauseMenu/Exit" unique_id=1640473888]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_5kw20")
+
+[node name="Effects" type="Control" parent="PauseMenu" unique_id=1180229553]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -54,17 +190,21 @@ offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(550, 360)
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="Panel" type="TextureRect" parent="PauseMenu/Panel" unique_id=1100420679]
+[node name="Panel" type="TextureRect" parent="PauseMenu/Effects" unique_id=1100420679]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("2_2jkrm")
+metadata/_edit_use_anchors_ = true
 
-[node name="Effect" type="ColorRect" parent="PauseMenu/Panel" unique_id=281104160]
+[node name="Effect" type="ColorRect" parent="PauseMenu/Effects" unique_id=281104160]
 material = SubResource("ShaderMaterial_h7jby")
 layout_mode = 1
 anchors_preset = 15
@@ -73,3 +213,4 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+metadata/_edit_use_anchors_ = true
