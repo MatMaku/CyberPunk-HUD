@@ -4,10 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://bikq633yymft" path="res://Images/Fondos/Pause menu.jpg" id="1_lg454"]
 [ext_resource type="Texture2D" uid="uid://by5fg5mlwo4cs" path="res://Images/Menu panel.png" id="2_2jkrm"]
 [ext_resource type="Texture2D" uid="uid://08sxg517u3wj" path="res://Images/Buttons/Selección 2.png" id="2_lj04q"]
+[ext_resource type="Script" uid="uid://dtqh1ichf4jpy" path="res://Scripts/MainMenuController.gd" id="3_5kw20"]
 [ext_resource type="Shader" uid="uid://ct0cd56plk083" path="res://Shaders/PanelEffect.gdshader" id="3_km1i3"]
 [ext_resource type="FontFile" uid="uid://bau7b4q7f3b7k" path="res://Fuentes/StickNoBills-VariableFont_wght.ttf" id="4_wqglo"]
 [ext_resource type="Texture2D" uid="uid://6vnst3hj1rrt" path="res://Images/Buttons/Boton 3.png" id="5_5kw20"]
 [ext_resource type="Texture2D" uid="uid://dao30yx62qa1m" path="res://Images/Buttons/Back.png" id="5_lj04q"]
+[ext_resource type="Texture2D" uid="uid://dj1bb5ky2wf2p" path="res://Images/Buttons/Boton 4.png" id="7_wqglo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ote3a"]
 font = ExtResource("4_wqglo")
@@ -16,6 +18,10 @@ font_size = 140
 [sub_resource type="LabelSettings" id="LabelSettings_l3xsy"]
 font = ExtResource("4_wqglo")
 font_size = 80
+
+[sub_resource type="LabelSettings" id="LabelSettings_5kw20"]
+font = ExtResource("4_wqglo")
+font_size = 50
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h7jby"]
 shader = ExtResource("3_km1i3")
@@ -36,10 +42,10 @@ shader_parameter/holo_tint = Color(0.35, 0.9, 1, 1)
 
 [node name="HoverManager" type="Node" parent="." unique_id=629788874 node_paths=PackedStringArray("buttons")]
 script = ExtResource("1_igaod")
-buttons = [NodePath("../PauseMenu/Continue"), NodePath("../PauseMenu/Options"), NodePath("../PauseMenu/Exit")]
+buttons = [NodePath("../PauseMenu/Main/Continue"), NodePath("../PauseMenu/Main/Options"), NodePath("../PauseMenu/Main/Exit"), NodePath("../PauseMenu/Options/Back")]
 hover_texture = ExtResource("2_lj04q")
 
-[node name="PauseMenu" type="Control" parent="." unique_id=1089429604]
+[node name="PauseMenu" type="Control" parent="." unique_id=1089429604 node_paths=PackedStringArray("main_menu", "play_button", "options_button", "exit_button", "options_menu", "back_button", "options_controls", "fade_overlay")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -47,6 +53,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(960, 540)
+script = ExtResource("3_5kw20")
+menu_mode = 1
+main_menu = NodePath("Main")
+play_button = NodePath("Main/Continue")
+options_button = NodePath("Main/Options")
+exit_button = NodePath("Main/Exit")
+options_menu = NodePath("Options")
+back_button = NodePath("Options/Back")
+options_controls = [NodePath("Options/Volumen"), NodePath("Options/Music"), NodePath("Options/Back")]
+fade_overlay = NodePath("FadeOverlay")
 metadata/_edit_use_anchors_ = true
 
 [node name="GameImage" type="TextureRect" parent="PauseMenu" unique_id=91356153]
@@ -71,16 +87,24 @@ label_settings = SubResource("LabelSettings_ote3a")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Continue" type="Button" parent="PauseMenu" unique_id=746378176]
+[node name="Main" type="Control" parent="PauseMenu" unique_id=637738432]
 layout_mode = 1
-offset_left = 752.0
-offset_top = 419.0
-offset_right = 1307.0
-offset_bottom = 534.0
-scale = Vector2(0.8, 0.8)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Continue" type="Button" parent="PauseMenu/Main" unique_id=746378176]
+layout_mode = 1
+offset_left = 690.0
+offset_top = 400.0
+offset_right = 1245.0
+offset_bottom = 515.0
+focus_mode = 0
 flat = true
 
-[node name="Background" type="TextureRect" parent="PauseMenu/Continue" unique_id=450162972]
+[node name="Background" type="TextureRect" parent="PauseMenu/Main/Continue" unique_id=450162972]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -91,7 +115,7 @@ grow_vertical = 2
 scale = Vector2(0.40000004, 1)
 texture = ExtResource("5_lj04q")
 
-[node name="Label" type="Label" parent="PauseMenu/Continue" unique_id=794862745]
+[node name="Label" type="Label" parent="PauseMenu/Main/Continue" unique_id=794862745]
 layout_mode = 0
 offset_left = 64.0
 offset_top = 5.0
@@ -100,22 +124,22 @@ offset_bottom = 106.0
 text = "Continue"
 label_settings = SubResource("LabelSettings_l3xsy")
 
-[node name="TextureRect" type="TextureRect" parent="PauseMenu/Continue" unique_id=955725757]
+[node name="TextureRect" type="TextureRect" parent="PauseMenu/Main/Continue" unique_id=955725757]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("5_5kw20")
 
-[node name="Options" type="Button" parent="PauseMenu" unique_id=365627143]
+[node name="Options" type="Button" parent="PauseMenu/Main" unique_id=365627143]
 layout_mode = 0
-offset_left = 752.0
-offset_top = 522.0
-offset_right = 1307.0
-offset_bottom = 637.0
-scale = Vector2(0.8, 0.8)
+offset_left = 690.0
+offset_top = 527.0
+offset_right = 1245.0
+offset_bottom = 642.0
+focus_mode = 0
 flat = true
 
-[node name="Background" type="TextureRect" parent="PauseMenu/Options" unique_id=63201814]
+[node name="Background" type="TextureRect" parent="PauseMenu/Main/Options" unique_id=63201814]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -126,7 +150,7 @@ grow_vertical = 2
 scale = Vector2(0.40000004, 1)
 texture = ExtResource("5_lj04q")
 
-[node name="Label" type="Label" parent="PauseMenu/Options" unique_id=692124388]
+[node name="Label" type="Label" parent="PauseMenu/Main/Options" unique_id=692124388]
 layout_mode = 0
 offset_left = 64.0
 offset_top = 5.0
@@ -135,22 +159,22 @@ offset_bottom = 106.0
 text = "Options"
 label_settings = SubResource("LabelSettings_l3xsy")
 
-[node name="TextureRect" type="TextureRect" parent="PauseMenu/Options" unique_id=492115511]
+[node name="TextureRect" type="TextureRect" parent="PauseMenu/Main/Options" unique_id=492115511]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("5_5kw20")
 
-[node name="Exit" type="Button" parent="PauseMenu" unique_id=1285564168]
+[node name="Exit" type="Button" parent="PauseMenu/Main" unique_id=1285564168]
 layout_mode = 0
-offset_left = 752.0
+offset_left = 690.0
 offset_top = 709.0
-offset_right = 1307.0
+offset_right = 1245.0
 offset_bottom = 824.0
-scale = Vector2(0.8, 0.8)
+focus_mode = 0
 flat = true
 
-[node name="Background" type="TextureRect" parent="PauseMenu/Exit" unique_id=914488980]
+[node name="Background" type="TextureRect" parent="PauseMenu/Main/Exit" unique_id=914488980]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -161,7 +185,7 @@ grow_vertical = 2
 scale = Vector2(0.40000004, 1)
 texture = ExtResource("5_lj04q")
 
-[node name="Label" type="Label" parent="PauseMenu/Exit" unique_id=1105919622]
+[node name="Label" type="Label" parent="PauseMenu/Main/Exit" unique_id=1105919622]
 layout_mode = 0
 offset_left = 64.0
 offset_top = 5.0
@@ -170,7 +194,145 @@ offset_bottom = 106.0
 text = "Exit"
 label_settings = SubResource("LabelSettings_l3xsy")
 
-[node name="TextureRect" type="TextureRect" parent="PauseMenu/Exit" unique_id=1640473888]
+[node name="TextureRect" type="TextureRect" parent="PauseMenu/Main/Exit" unique_id=1640473888]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_5kw20")
+
+[node name="Options" type="Control" parent="PauseMenu" unique_id=387582071]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Volumen" type="Button" parent="PauseMenu/Options" unique_id=2142189659]
+layout_mode = 1
+offset_left = 690.0
+offset_top = 400.0
+offset_right = 1245.0
+offset_bottom = 515.0
+focus_mode = 0
+flat = true
+
+[node name="Background" type="TextureRect" parent="PauseMenu/Options/Volumen" unique_id=1216837687]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -71.25
+offset_top = -16.25
+offset_right = 317.5
+offset_bottom = -16.25
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.40000004, 1)
+texture = ExtResource("5_lj04q")
+
+[node name="Label" type="Label" parent="PauseMenu/Options/Volumen" unique_id=1077192020]
+layout_mode = 0
+offset_left = 13.749999
+offset_top = 4.9999995
+offset_right = 137.75
+offset_bottom = 56.0
+text = "Volume"
+label_settings = SubResource("LabelSettings_5kw20")
+
+[node name="TextureRect" type="TextureRect" parent="PauseMenu/Options/Volumen" unique_id=1595502]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_wqglo")
+
+[node name="HSlider" type="HSlider" parent="PauseMenu/Options/Volumen" unique_id=29992113]
+layout_mode = 0
+offset_left = 14.999998
+offset_top = 61.249992
+offset_right = 315.0
+offset_bottom = 91.24999
+scale = Vector2(1.5, 1.5)
+value = 80.0
+
+[node name="Music" type="Button" parent="PauseMenu/Options" unique_id=2089266570]
+layout_mode = 0
+offset_left = 690.0
+offset_top = 527.0
+offset_right = 1245.0
+offset_bottom = 642.0
+focus_mode = 0
+flat = true
+
+[node name="Background" type="TextureRect" parent="PauseMenu/Options/Music" unique_id=1717027967]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -72.5
+offset_top = -16.25
+offset_right = 150.625
+offset_bottom = -16.25
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.40000004, 1)
+texture = ExtResource("5_lj04q")
+
+[node name="Label" type="Label" parent="PauseMenu/Options/Music" unique_id=712159145]
+layout_mode = 0
+offset_left = 13.75
+offset_top = 5.0
+offset_right = 168.75
+offset_bottom = 68.0
+text = "Music"
+label_settings = SubResource("LabelSettings_5kw20")
+
+[node name="TextureRect" type="TextureRect" parent="PauseMenu/Options/Music" unique_id=1721370488]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_wqglo")
+
+[node name="HSlider" type="HSlider" parent="PauseMenu/Options/Music" unique_id=1781697021]
+layout_mode = 0
+offset_left = 14.999998
+offset_top = 61.249992
+offset_right = 315.0
+offset_bottom = 91.24999
+scale = Vector2(1.5, 1.5)
+value = 80.0
+
+[node name="Back" type="Button" parent="PauseMenu/Options" unique_id=1211629574]
+layout_mode = 0
+offset_left = 690.0
+offset_top = 709.0
+offset_right = 1245.0
+offset_bottom = 824.0
+focus_mode = 0
+flat = true
+
+[node name="Background" type="TextureRect" parent="PauseMenu/Options/Back" unique_id=152956646]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 54.320007
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.40000004, 1)
+texture = ExtResource("5_lj04q")
+
+[node name="Label" type="Label" parent="PauseMenu/Options/Back" unique_id=642518543]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 5.0
+offset_right = 316.0
+offset_bottom = 106.0
+text = "Back"
+label_settings = SubResource("LabelSettings_l3xsy")
+
+[node name="TextureRect" type="TextureRect" parent="PauseMenu/Options/Back" unique_id=999507735]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -191,7 +353,6 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(550, 360)
 mouse_filter = 2
-metadata/_edit_use_anchors_ = true
 
 [node name="Panel" type="TextureRect" parent="PauseMenu/Effects" unique_id=1100420679]
 layout_mode = 1
@@ -214,3 +375,17 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
+
+[node name="FadeOverlay" type="ColorRect" parent="PauseMenu" unique_id=1676397264]
+visible = false
+z_index = 100
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

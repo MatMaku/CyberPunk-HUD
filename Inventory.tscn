@@ -1,0 +1,154 @@
+[gd_scene format=3 uid="uid://bxp1mh5sirqnf"]
+
+[ext_resource type="Texture2D" uid="uid://bikq633yymft" path="res://Images/Fondos/Pause menu.jpg" id="1_3n7vm"]
+[ext_resource type="Script" uid="uid://c7811tov82ocq" path="res://Scripts/GameManager.gd" id="1_ki15f"]
+[ext_resource type="Script" uid="uid://bf8sxbs5jtjrj" path="res://Scripts/HoverManager.gd" id="2_0261c"]
+[ext_resource type="Texture2D" uid="uid://488rw43h2jr8" path="res://Images/Buttons/Selección 3.png" id="3_e3raj"]
+[ext_resource type="Texture2D" uid="uid://cq8bx6p3dq045" path="res://Images/Buttons/Inventory.png" id="5_y13mq"]
+[ext_resource type="Texture2D" uid="uid://by5fg5mlwo4cs" path="res://Images/Menu panel.png" id="6_mva8e"]
+[ext_resource type="Shader" uid="uid://ct0cd56plk083" path="res://Shaders/PanelEffect.gdshader" id="7_d2uli"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ny8ul"]
+shader = ExtResource("7_d2uli")
+shader_parameter/inner_margin = Vector2(0.05, 0.05)
+shader_parameter/edge_width = 0.0
+shader_parameter/inner_softness = 0.04400000209
+shader_parameter/outer_fade = 0.08
+shader_parameter/glitch_strength = 0.0050000002375
+shader_parameter/glitch_speed = 7.0
+shader_parameter/slice_count = 110.0
+shader_parameter/rgb_split = 0.0035
+shader_parameter/scanline_strength = 0.2
+shader_parameter/scanline_freq = 850.0
+shader_parameter/shimmer = 0.10000000475
+shader_parameter/holo_tint = Color(0.35, 0.9, 1, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=740849850]
+
+[node name="GameManager" type="Node" parent="." unique_id=1817349157]
+script = ExtResource("1_ki15f")
+screen_mode = 1
+
+[node name="HoverManager" type="Node" parent="." unique_id=1766227904 node_paths=PackedStringArray("buttons")]
+script = ExtResource("2_0261c")
+buttons = [NodePath("../InventoryMenu/Button"), NodePath("../InventoryMenu/Button2"), NodePath("../InventoryMenu/Button3"), NodePath("../InventoryMenu/Button4"), NodePath("../InventoryMenu/Button5")]
+hover_texture = ExtResource("3_e3raj")
+
+[node name="InventoryMenu" type="Control" parent="." unique_id=86250165]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameImage" type="TextureRect" parent="InventoryMenu" unique_id=2048687777]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_3n7vm")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="InventoryMenu" unique_id=155411222]
+layout_mode = 0
+offset_left = 463.0
+offset_top = 259.0
+offset_right = 802.0
+offset_bottom = 354.0
+focus_mode = 0
+flat = true
+icon_alignment = 1
+
+[node name="Button2" type="Button" parent="InventoryMenu" unique_id=647206248]
+layout_mode = 0
+offset_left = 463.0
+offset_top = 382.0
+offset_right = 802.0
+offset_bottom = 477.0
+focus_mode = 0
+flat = true
+icon_alignment = 1
+
+[node name="Button3" type="Button" parent="InventoryMenu" unique_id=229060153]
+layout_mode = 0
+offset_left = 463.0
+offset_top = 504.0
+offset_right = 802.0
+offset_bottom = 599.0
+focus_mode = 0
+flat = true
+icon_alignment = 1
+
+[node name="Button4" type="Button" parent="InventoryMenu" unique_id=1632168355]
+layout_mode = 0
+offset_left = 463.0
+offset_top = 626.0
+offset_right = 802.0
+offset_bottom = 721.0
+focus_mode = 0
+flat = true
+icon_alignment = 1
+
+[node name="Button5" type="Button" parent="InventoryMenu" unique_id=1409513358]
+layout_mode = 0
+offset_left = 463.0
+offset_top = 748.0
+offset_right = 802.0
+offset_bottom = 843.0
+focus_mode = 0
+flat = true
+icon_alignment = 1
+
+[node name="Effects" type="Control" parent="InventoryMenu" unique_id=856743039]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -550.0
+offset_top = -360.0
+offset_right = 550.0001
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(550, 360)
+mouse_filter = 2
+
+[node name="Inventario" type="TextureRect" parent="InventoryMenu/Effects" unique_id=1529819660]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_y13mq")
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="TextureRect" parent="InventoryMenu/Effects" unique_id=151768696]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_mva8e")
+metadata/_edit_use_anchors_ = true
+
+[node name="Effect" type="ColorRect" parent="InventoryMenu/Effects" unique_id=1764056610]
+material = SubResource("ShaderMaterial_ny8ul")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.039090905
+anchor_top = -0.019444445
+anchor_right = 1.0390909
+anchor_bottom = 1.0194445
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true

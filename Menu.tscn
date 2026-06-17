@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://bf8sxbs5jtjrj" path="res://Scripts/HoverManager.gd" id="1_1igrg"]
 [ext_resource type="Texture2D" uid="uid://dev5aetaayyb8" path="res://Images/Buttons/Selección.png" id="2_v0s1l"]
 [ext_resource type="Script" uid="uid://dtqh1ichf4jpy" path="res://Scripts/MainMenuController.gd" id="3_5qkn8"]
-[ext_resource type="PackedScene" uid="uid://bewke5t5gbqn5" path="res://Pause.tscn" id="4_xucoo"]
 [ext_resource type="Texture2D" uid="uid://bxvq05syjtq2n" path="res://Images/Fondos/Fondo.png" id="5_ktlje"]
 [ext_resource type="Script" uid="uid://dgpinvtt3raf" path="res://Scripts/BackgroundSlideshow.gd" id="5_xucoo"]
 [ext_resource type="Texture2D" uid="uid://ixah3k16kxqt" path="res://Images/Fondos/Fondo 2.png" id="6_ktlje"]
@@ -56,7 +55,6 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(960, 540)
 script = ExtResource("3_5qkn8")
-game_scene = ExtResource("4_xucoo")
 main_menu = NodePath("MainButtons")
 play_button = NodePath("MainButtons/Start")
 options_button = NodePath("MainButtons/Options")
@@ -162,6 +160,7 @@ offset_left = 70.0
 offset_top = 550.0
 offset_right = 412.0
 offset_bottom = 698.0
+focus_mode = 0
 flat = true
 expand_icon = true
 
@@ -195,6 +194,7 @@ offset_left = 70.0
 offset_top = 720.0
 offset_right = 412.0
 offset_bottom = 868.0
+focus_mode = 0
 flat = true
 expand_icon = true
 
@@ -228,6 +228,7 @@ offset_left = 70.0
 offset_top = 890.0
 offset_right = 412.0
 offset_bottom = 1038.0
+focus_mode = 0
 flat = true
 expand_icon = true
 
@@ -267,6 +268,7 @@ offset_left = 70.0
 offset_top = 550.0
 offset_right = 412.0
 offset_bottom = 698.0
+focus_mode = 0
 flat = true
 expand_icon = true
 
@@ -309,6 +311,7 @@ offset_left = 70.0
 offset_top = 720.0
 offset_right = 412.0
 offset_bottom = 868.0
+focus_mode = 0
 flat = true
 expand_icon = true
 
@@ -351,6 +354,7 @@ offset_left = 70.0
 offset_top = 890.0
 offset_right = 412.0
 offset_bottom = 1038.0
+focus_mode = 0
 flat = true
 expand_icon = true
 

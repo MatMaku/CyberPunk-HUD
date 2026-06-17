@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bpq07c0qda6cy"]
+
+[ext_resource type="Script" uid="uid://c7811tov82ocq" path="res://Scripts/GameManager.gd" id="1_u44n3"]
+[ext_resource type="Texture2D" uid="uid://bngj886dj6h8l" path="res://Images/Fondos/GameImage.png" id="1_wbfu4"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=120637827]
+
+[node name="GameManager" type="Node" parent="." unique_id=1248052674]
+script = ExtResource("1_u44n3")
+
+[node name="Game" type="Control" parent="." unique_id=1492555896]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameImage" type="TextureRect" parent="Game" unique_id=2085966216]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_wbfu4")
